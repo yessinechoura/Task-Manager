@@ -65,7 +65,9 @@ class MainViewController: UIViewController {
     
     @objc func addTaskAction() {
         if categories.isEmpty {
-            showSimpleAlert(alertMessage: "You should create categories first!")
+            if UserDefaults.standard.bool(forKey: "notification") {
+                showSimpleAlert(alertMessage: "You should create categories first!")
+            }
             return
         }
         presentTaskViewController()

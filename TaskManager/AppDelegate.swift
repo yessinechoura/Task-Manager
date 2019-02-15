@@ -18,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        if  !UserDefaults.standard.bool(forKey: "isFirstTime") {
+             UserDefaults.standard.set(true, forKey: "notification")
+            UserDefaults.standard.set(true, forKey: "isFirstTime")
+        }
+        
         let mainNavigationController = UINavigationController(rootViewController: MainViewController())
         window?.rootViewController = mainNavigationController
         

@@ -65,7 +65,9 @@ class TaskViewController: UIViewController {
     @objc func saveAction() {
         if selectedTask.title?.isEmpty ?? true || selectedTask.category == nil  {
             // Error
-            showSimpleAlert(alertMessage: "You pick a title and select a category!")
+            if UserDefaults.standard.bool(forKey: "notification") {
+                showSimpleAlert(alertMessage: "You pick a title and select a category!")
+            }
         } else {
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate

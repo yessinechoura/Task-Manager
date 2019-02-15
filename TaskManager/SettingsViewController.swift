@@ -68,7 +68,10 @@ class SettingsViewController: UIViewController {
     @objc func addCategoryAction() {
         
         guard let color = category.color, let name = category.name else {
-            showSimpleAlert(alertMessage: "You should pick a name and a color!")
+            
+            if UserDefaults.standard.bool(forKey: "notification") {
+                showSimpleAlert(alertMessage: "You should pick a name and a color!")
+            }
             return
         }
         if color.isEmpty || name.isEmpty {
